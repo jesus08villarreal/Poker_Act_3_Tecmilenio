@@ -1,15 +1,45 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome!");
+        Deck deck = new Deck();
+        Scanner scanner = new Scanner(System.in);
+        boolean exit = false;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        while (!exit) {
+            System.out.println("\nElige una opción:");
+            System.out.println("1. Mezclar el deck");
+            System.out.println("2. Mostrar la primera carta del deck");
+            System.out.println("3. Seleccionar una carta al azar del deck");
+            System.out.println("4. Obtener una mano de cinco cartas del deck");
+            System.out.println("5. Salir");
+            System.out.print("Opción: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    deck.shuffle();
+                    break;
+                case 2:
+                    deck.head();
+                    break;
+                case 3:
+                    deck.pick();
+                    break;
+                case 4:
+                    deck.hand();
+                    break;
+                case 5:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Opción inválida. Por favor, elige una opción válida.");
+            }
         }
+
+        scanner.close();
     }
 }
+
